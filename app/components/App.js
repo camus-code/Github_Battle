@@ -1,13 +1,10 @@
-var React = require('react');
-var Popular = require('./Popular');
-var ReactRouter = require('react-router-dom'); // for react (not native)
-var Router = ReactRouter.BrowserRouter; // on the web
-var Route = ReactRouter.Route; // gonna have routes
-var Switch = ReactRouter.Switch; // URL switching
-var Nav = require('./Nav');
-var Home = require('./Home');
-var Battle = require('./Battle');
-var Results = require('./Results');
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // for react (not native)
+import Nav from './Nav';
+import Home from './Home';
+import Battle from './Battle';
+import Results from './Results';
+import Popular from './Popular';
 
 class App extends React.Component {
   render() {
@@ -20,15 +17,25 @@ class App extends React.Component {
 	    			<Route exact path ='/battle' component={Battle} />
 	        	<Route path='/popular' component={Popular} />
 	        	<Route path='/battle/results/' component={Results} />
-	        	<Route render={function () {
-	        		return <p>Not found</p>
-	        	}} />
+	        	<Route render={() => <p>Not found</p> }/>
     			</Switch>
       	</div>
     	</Router>
-     
     )
   }
 }
 
-module.exports = App;
+export default App;
+
+
+async function handleGetUser () {
+  var user = await getUser()
+  console.log(user)
+}
+
+function handleGetUser () {
+  getUser()
+    .then((user) => {
+      console.log('The user is: ', user)
+    })
+}

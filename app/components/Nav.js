@@ -1,9 +1,9 @@
-var React = require('react'); // always need to require react in components
-var NavLink = require('react-router-dom').NavLink;
+import React from 'react'; // always need to require react in components
+import { NavLink } from 'react-router-dom';
 
 
 //Doesn't have state so navbar is stateless functional component
-function Nav () {
+export default function Nav () {
 	return (
 		<ul className='nav'>
 			<li>
@@ -25,6 +25,4 @@ function Nav () {
 	)
 }
 
-
-module.exports = Nav;
 // have to export each component
